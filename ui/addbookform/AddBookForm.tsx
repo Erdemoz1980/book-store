@@ -1,25 +1,28 @@
 'use client';
+import React from 'react';
 import { useState } from 'react';
+import { BookState } from '@/app/redux/types/book';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsAddBookModalOpen} from '@/app/redux/slices/bookSlice';
 import { addBook } from '@/app/redux/slices/bookSlice';
 import styles from './addbookform.module.css';
 import { FaRegTimesCircle } from 'react-icons/fa';
+import { MAX_DESCRIPTION_LENGTH } from '@/ui/constants';
 
+const maxDescriptionLength = 265
 
-const AddBookForm = () => {
+const AddBookForm:React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     category: '',
     price: '',
     description:''
   });
-
-  const { isAddBookModalOpen } = useSelector(state => state.books);
+  const { isAddBookModalOpen }: BookState = useSelector((state: { books: BookState }) => state.books);
   const dispatch = useDispatch();
 
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = <T extends HTMLInputElement | HTMLTextAreaElement>(e: React.ChangeEvent<T>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -27,11 +30,14 @@ const AddBookForm = () => {
     }))
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = (e:React.FormEvent) => {
     e.preventDefault();
     
     //Add the book data to redux state
-    dispatch(addBook(formData));
+    dispatch(addBook({
+      id: Date.now().toString(),
+      ...formData
+    }));
 
     //Reset the form state after submit
     setFormData({ name: '', category: '', price: '', description:'' })
@@ -60,7 +66,7 @@ const AddBookForm = () => {
         
         <label htmlFor="description">Description
        
-        <textarea name="description" id="description" cols="30" rows="10" value={formData.description} onChange={onChangeHandler} required></textarea></label>
+          <textarea name="description" id="description" value={formData.description} onChange={onChangeHandler} maxLength={MAX_DESCRIPTION_LENGTH} required></textarea></label>
        
       <button className={styles.submitButton}>
         Submit

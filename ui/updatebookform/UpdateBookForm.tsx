@@ -1,12 +1,15 @@
 'use client';
+import React, { FormEvent } from 'react';
+import { BookState, Book } from '@/app/redux/types/book';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateBook, setCurrentBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
+import { updateBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
 import styles from './updatebookform.module.css';
 import { FaRegTimesCircle } from 'react-icons/fa';
+import { MAX_DESCRIPTION_LENGTH } from '@/ui/constants';
 
 
-const UpdateBookForm = () => {
+const UpdateBookForm:React.FC = () => {
   const [formData, setFormData] = useState({
     id:'',
     name: '',
@@ -16,20 +19,23 @@ const UpdateBookForm = () => {
   });
 
   const dispatch = useDispatch();
-  const { isUpdateBookModalOpen, currentBook } = useSelector(state => state.books);
+  const { isUpdateBookModalOpen, currentBook }: BookState = useSelector((state: { books: BookState }) => state.books);
 
   //Populate the form with current book data
   useEffect(() => {
-    setFormData({
-      id:currentBook.id,
-      name: currentBook.name,
-      category: currentBook.category,
-      price: currentBook.price,
-      description: currentBook.description,
-    })
+    // Check if currentBook is not null or undefined
+    if (currentBook) {
+      setFormData({
+        id:currentBook.id ?? '',
+        name: currentBook.name ?? '',
+        category: currentBook.category ?? '',
+        price: currentBook.price ?? '',
+        description: currentBook.description ?? '',
+      });
+    }
   }, [currentBook]);
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler =<T extends HTMLInputElement | HTMLTextAreaElement> (e:React.ChangeEvent<T>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -37,7 +43,7 @@ const UpdateBookForm = () => {
     }))
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = (e:React.FormEvent) => {
     e.preventDefault();    
 
     //Add the book data to redux state
@@ -67,7 +73,7 @@ const UpdateBookForm = () => {
         
         <label htmlFor="description">Description
        
-        <textarea name="description" id="description" cols="30" rows="10" value={formData.description} onChange={onChangeHandler} required></textarea></label>
+        <textarea name="description" id="description" value={formData.description} onChange={onChangeHandler} maxLength={MAX_DESCRIPTION_LENGTH} required></textarea></label>
        
       <button className={styles.submitButton}>
         Submit

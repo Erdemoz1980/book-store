@@ -1,17 +1,21 @@
 'use client';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteBook, setCurrentBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
+import { Book } from '@/app/redux/types/book';
 import styles from './bookcard.module.css';
 import { FaTrash } from 'react-icons/fa';
 
-const BookCard = ({ id, name, price, category, description }) => {
+interface BookCardProps extends Book {};
+
+const BookCard:React.FC<BookCardProps> = ({ id, name, price, category, description }) => {
   const dispatch = useDispatch();
   
   const handleDelete = () => {
    dispatch(deleteBook(id))
  }
 
-  const onClickHandler = (e) => {
+  const onClickHandler = () => {
       //Set the current book in Redux state
       dispatch(setCurrentBook(id));
     

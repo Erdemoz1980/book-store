@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/ui/navbar/Navbar';
-import { Providers } from './redux/provider';
+import Providers from '@/app/redux/provider';
 
 const roboto = Roboto({
   weight:["400"],

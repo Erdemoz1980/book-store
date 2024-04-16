@@ -1,34 +1,34 @@
 [
   {
-    "id":1000,
+    "id":"1000",
     "name":"Dune",
     "price":16.99,
     "category":"Sci-fi",
     "description":"Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness."
   },
   {
-    "id":1001,
+    "id":"1001",
     "name":"Rendezvous with Rama",
     "price":22.99,
     "category":"Sci-fi",
     "description":"Set in the 2130s, the story involves a 50-by-20-kilometre (31 by 12 mi) cylindrical alien starship that enters the Solar System. The story is told from the point of view of a group of human explorers who intercept the ship in an attempt to unlock its mysteries."
   },
   {
-    "id":1002,
+    "id":"1002",
     "name":"Don Quixote",
     "price":16.99,
     "category":"Satire",
     "description":"The plot revolves around the adventures of a member of the lowest nobility, a hidalgo from La Mancha named Alonso Quijano, who reads so many chivalric romances that he loses his mind and decides to become a knight-errant."
   },
   {
-    "id":1003,
+    "id":"1003",
     "name":"Odyssey",
     "price":18.55,
     "category":"Epic Poetry",
     "description":"The Odyssey is an epic poem in 24 books traditionally attributed to the ancient Greek poet Homer. The poem is the story of Odysseus, king of Ithaca, who wanders for 10 years (although the action of the poem covers only the final six weeks) trying to get home after the Trojan War."
   },
   {
-    "id":1004,
+    "id":"1004",
     "name":"Design Patterns",
     "price":63.72,
     "category":"Technology",
