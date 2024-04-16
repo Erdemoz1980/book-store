@@ -1,0 +1,16 @@
+.navbarWrapper{
+  max-width: 100vw;
+  height: 100px;
+  color:#fff;
+  background-color:#004c80;
+}
+
+.container{
+  max-width: 1440px;
+  margin: auto;
+  padding: 10px 20px;
+}
+
+.navbarWrapper h2{
+  font-weight: 400;
+}

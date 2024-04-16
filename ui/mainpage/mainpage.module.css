@@ -1,0 +1,7 @@
+.mainPageWrapper{
+  max-width: 1140px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:20px
+}

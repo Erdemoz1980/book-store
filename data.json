@@ -3,31 +3,31 @@
     "id":1000,
     "name":"Dune",
     "price":16.99,
-    "category":["Sci-fi", "Philosophy","Psychology"]
+    "category":"Sci-fi"
   },
   {
     "id":1001,
     "name":"Rendezvous with Rama",
     "price":22.99,
-    "category":["Sci-fi"]
+    "category":"Sci-fi"
   },
   {
     "id":1002,
     "name":"Don Quixote",
     "price":16.99,
-    "category":["Satire", "Novel","Adventure"]
+    "category":"Satire"
   },
   {
     "id":1003,
     "name":"Odyssey",
     "price":18.55,
-    "category":["Epic Poetry"]
+    "category":"Epic Poetry"
   },
   {
     "id":1004,
     "name":"Design Patterns",
     "price":63.72,
-    "category":["Technology", "Software"]
+    "category":"Technology"
   }
 
 ]

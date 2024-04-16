@@ -1,0 +1,46 @@
+.cardWrapper{
+  max-width: 400px;
+  height: 300px;
+  background: #ffe8d7;
+  padding: 20px 30px;
+  border-radius: 5px;
+  box-shadow:1px 3px 10px  rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.cardWrapper:hover{
+  background: #ecd4c2;
+}
+
+.cardHeader{
+  margin-bottom: 15px;
+}
+
+.cardHeader h2{
+  font-size: 28px;
+}
+
+.cardBody{
+  margin-bottom: 140px;
+}
+
+.cardBody ul li{
+  margin-bottom: 5px;
+}
+
+.highlight{
+  font-weight: bold;
+}
+
+.deleteButton{ 
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: #fd5041;
+  transition: background-color 0.2s
+}
+
+.deleteButton:hover{
+  background-color: #da1908;
+}
+
