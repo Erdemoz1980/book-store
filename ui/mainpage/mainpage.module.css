@@ -1,6 +1,24 @@
 .mainPageWrapper{
   max-width: 1140px;
   margin: auto;
+  padding: 20px;
+}
+
+.addBookButton{
+  margin-bottom: 20px;
+  background: #004c80;
+  color:#fff;
+  width: 160px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  gap:10px;
+}
+
+.bookDisplayGrid{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap:20px

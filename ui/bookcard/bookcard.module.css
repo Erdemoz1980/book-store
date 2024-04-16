@@ -1,6 +1,10 @@
+.cardOuterWrapper{
+  position: relative;
+}
+
 .cardWrapper{
   max-width: 400px;
-  height: 300px;
+  height: 350px;
   background: #ffe8d7;
   padding: 20px 30px;
   border-radius: 5px;
@@ -14,19 +18,21 @@
 }
 
 .cardHeader{
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .cardHeader h2{
   font-size: 28px;
 }
 
-.cardBody{
-  margin-bottom: 140px;
-}
-
 .cardBody ul li{
   margin-bottom: 5px;
+}
+
+.description{
+  margin-top: 5px;
+  font-size: 15px;
+  font-style: italic;
 }
 
 .highlight{
@@ -34,6 +40,9 @@
 }
 
 .deleteButton{ 
+  position: absolute;
+  bottom:20px;
+  left:30px;
   padding: 5px 20px;
   border-radius: 5px;
   background-color: #fd5041;
