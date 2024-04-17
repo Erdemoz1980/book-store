@@ -37,7 +37,7 @@ export const bookSlice = createSlice({
       state.booklist = [...state.booklist, {...action.payload}]
       localStorage.setItem('booklist', JSON.stringify(state.booklist))
     },
-    deleteBook: (state, action) => {
+    deleteBook: (state, action:PayloadAction<string>) => {
       const filteredBooks = state.booklist.filter(book => book.id !== action.payload);
       state.booklist = filteredBooks;
       localStorage.setItem('booklist', JSON.stringify(state.booklist))
