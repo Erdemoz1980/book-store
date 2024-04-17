@@ -7,6 +7,7 @@ import { setIsAddBookModalOpen} from '@/app/redux/slices/bookSlice';
 import { addBook } from '@/app/redux/slices/bookSlice';
 import styles from './addbookform.module.css';
 import { FaRegTimesCircle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import { MAX_DESCRIPTION_LENGTH } from '@/ui/constants';
 
 const maxDescriptionLength = 265
@@ -44,6 +45,7 @@ const AddBookForm:React.FC = () => {
     
     //Close the modal after submit
     dispatch(setIsAddBookModalOpen(false));
+    toast.success('Book successfully added!')
   }
 
   return (

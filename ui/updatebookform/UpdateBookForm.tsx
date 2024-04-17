@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
 import styles from './updatebookform.module.css';
 import { FaRegTimesCircle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import { MAX_DESCRIPTION_LENGTH } from '@/ui/constants';
 
 
@@ -51,6 +52,8 @@ const UpdateBookForm:React.FC = () => {
 
     //Close the modal after submit
     dispatch(setIsUpdateBookModalOpen(false));
+    
+    toast.success('Book successfully updated!')
   }
 
   return (

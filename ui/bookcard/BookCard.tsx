@@ -12,7 +12,11 @@ const BookCard:React.FC<BookCardProps> = ({ id, name, price, category, descripti
   const dispatch = useDispatch();
   
   const handleDelete = () => {
-   dispatch(deleteBook(id))
+    if (window.confirm('Are you sure, you want to delete the book?')) {
+      dispatch(deleteBook(id))
+    }
+    
+     
  }
 
   const onClickHandler = () => {

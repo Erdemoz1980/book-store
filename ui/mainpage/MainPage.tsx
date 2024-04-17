@@ -23,7 +23,7 @@ const MainPage: React.FC = () => {
       {isUpdateBookModalOpen && <UpdateBookForm/>}
       {booklist.length < 1 ? (
         <p>There are currently no books to show</p>) : (
-        <div className={styles.bookDisplayGrid}>
+        <div className={styles.bookDisplayContainer}>
           {booklist.map(book => (
             <BookCard key={book.id} {...book} />
           ))}

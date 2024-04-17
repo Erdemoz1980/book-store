@@ -3,6 +3,8 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/ui/navbar/Navbar';
 import Providers from '@/app/redux/provider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto({
   weight:["400"],
@@ -33,6 +35,7 @@ export default function RootLayout({
             {children}
             </Providers>
         </main>
+        <ToastContainer />
        </body>
     </html>
   );

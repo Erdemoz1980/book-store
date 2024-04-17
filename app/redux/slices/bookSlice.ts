@@ -3,13 +3,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Book, BookState } from '../types/book';
 import booksData from '@/data.json'
 
-//Check if local storage has booklist
-const booklistFromStorageString = localStorage.getItem('booklist');
-const booklistFromStorage = booklistFromStorageString ? JSON.parse(booklistFromStorageString) : [];
+const getInitialBooklist = () => {
+  if (typeof window !== 'undefined') {
+    const booklistFromStorageString = localStorage.getItem('booklist');
+    return booklistFromStorageString ? JSON.parse(booklistFromStorageString) : booksData;
+  } else {
+    return booksData;
+  }
+}
 
 
 const initialState: BookState = {
-  booklist: booklistFromStorage ? booklistFromStorage : booksData,
+  booklist: getInitialBooklist(),
   currentBook: null,
   isAddBookModalOpen: false,
   isUpdateBookModalOpen:false

@@ -1,5 +1,5 @@
 .mainPageWrapper{
-  max-width: 1140px;
+  max-width: 1440px;
   margin: auto;
   padding: 20px;
 }
@@ -18,8 +18,22 @@
   gap:10px;
 }
 
-.bookDisplayGrid{
+.bookDisplayContainer{
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap:20px
+  gap:20px;
+}
+
+@media screen and (max-width:1080px) {
+  .bookDisplayContainer {
+    grid-template-columns: repeat(2,1fr);
+    
+  }
+}
+
+@media screen and (max-width:640px) {
+  .bookDisplayContainer{
+    display: flex;
+    flex-direction: column;
+  }
 }
