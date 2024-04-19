@@ -10,7 +10,8 @@ interface BookState {
   booklist: Book[],
   currentBook: Book | null,
   isAddBookModalOpen:boolean,
-  isUpdateBookModalOpen:boolean,
+  isUpdateBookModalOpen: boolean,
+  loading:boolean
 }
 
 export type { Book, BookState };

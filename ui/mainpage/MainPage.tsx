@@ -7,10 +7,11 @@ import styles from './mainpage.module.css';
 import BookCard from '@/ui/bookcard/BookCard';
 import AddBookForm from '@/ui/addbookform/AddBookForm';
 import UpdateBookForm from '@/ui/updatebookform/UpdateBookForm';
+import Spinner from '@/ui/spinner/Spinner';
 import { FaPlusCircle } from 'react-icons/fa';
 
 const MainPage: React.FC = () => {
-  const { booklist, isAddBookModalOpen, isUpdateBookModalOpen }: BookState = useSelector((state: { books: BookState }) => state.books);
+  const { loading, booklist, isAddBookModalOpen, isUpdateBookModalOpen }: BookState = useSelector((state: { books: BookState }) => state.books);
 
   const dispatch = useDispatch();
   
@@ -20,8 +21,9 @@ const MainPage: React.FC = () => {
         <FaPlusCircle />Add a book
       </button>
       {isAddBookModalOpen && <AddBookForm />}
-      {isUpdateBookModalOpen && <UpdateBookForm/>}
-      {booklist.length < 1 ? (
+      {isUpdateBookModalOpen && <UpdateBookForm />}
+      {loading && <Spinner loading={loading} />}
+      {!loading && booklist.length < 1 ? (
         <p>There are currently no books to show</p>) : (
         <div className={styles.bookDisplayContainer}>
           {booklist.map(book => (

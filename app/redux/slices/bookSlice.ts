@@ -1,29 +1,23 @@
 "use client";
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Book, BookState } from '../types/book';
-import booksData from '@/data.json'
-
-const getInitialBooklist = () => {
-  if (typeof window !== 'undefined') {
-    const booklistFromStorageString = localStorage.getItem('booklist');
-    return booklistFromStorageString ? JSON.parse(booklistFromStorageString) : booksData;
-  } else {
-    return booksData;
-  }
-}
 
 
 const initialState: BookState = {
-  booklist: getInitialBooklist(),
+  booklist: [],
   currentBook: null,
   isAddBookModalOpen: false,
-  isUpdateBookModalOpen:false
+  isUpdateBookModalOpen: false,
+  loading:true
 }
 
 export const bookSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
+    setLoading: (state, action:PayloadAction<boolean>) => {
+      state.loading = action.payload
+    },
     setIsAddBookModalOpen: (state, action: PayloadAction<boolean>) => {
       state.isAddBookModalOpen = action.payload
     },
@@ -32,6 +26,10 @@ export const bookSlice = createSlice({
     },
     setCurrentBook: (state, action: PayloadAction<string>) => {
       state.currentBook = state.booklist.find(book => book.id === action.payload) || null
+    },
+    setBookList: (state, action: PayloadAction<Book[]>) => {
+      state.booklist = action.payload
+      localStorage.setItem('booklist', JSON.stringify(action.payload))
     },
     addBook: (state, action: PayloadAction<Book>) => {
       state.booklist = [...state.booklist, {...action.payload}]
@@ -55,5 +53,5 @@ export const bookSlice = createSlice({
 }
 );
 
-export const { deleteBook, addBook, updateBook, setCurrentBook, setIsAddBookModalOpen, setIsUpdateBookModalOpen } = bookSlice.actions;
+export const { setLoading, setBookList, deleteBook, addBook, updateBook, setCurrentBook, setIsAddBookModalOpen, setIsUpdateBookModalOpen } = bookSlice.actions;
 export default bookSlice.reducer;
