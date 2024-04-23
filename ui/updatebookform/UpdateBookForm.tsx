@@ -1,6 +1,6 @@
 'use client';
-import React, { FormEvent } from 'react';
-import { BookState, Book } from '@/app/redux/types/book';
+import React from 'react';
+import { BookState } from '@/app/redux/types/book';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
@@ -20,7 +20,7 @@ const UpdateBookForm:React.FC = () => {
   });
 
   const dispatch = useDispatch();
-  const { isUpdateBookModalOpen, currentBook }: BookState = useSelector((state: { books: BookState }) => state.books);
+  const { isUpdateBookModalOpen, currentBook, booklist }: BookState = useSelector((state: { books: BookState }) => state.books);
 
   //Populate the form with current book data
   useEffect(() => {
