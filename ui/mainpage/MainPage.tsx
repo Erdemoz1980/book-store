@@ -15,7 +15,6 @@ const MainPage: React.FC = () => {
   const { loading, booklist, isAddBookModalOpen, isUpdateBookModalOpen }: BookState = useSelector((state: { books: BookState }) => state.books);
 
   const dispatch = useDispatch();
-
   
   return (
     <section className={styles.mainPageWrapper}>

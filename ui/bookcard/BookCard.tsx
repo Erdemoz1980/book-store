@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocalStorage } from '@/app/hooks/useLocalStorage';
 import { deleteBook, setCurrentBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
 import { Book, BookState } from '@/app/redux/types/book';
 import styles from './bookcard.module.css';
@@ -9,7 +10,11 @@ import { FaTrash } from 'react-icons/fa';
 interface BookCardProps extends Book {};
 
 const BookCard: React.FC<BookCardProps> = ({ id, name, price, category, description }) => {
+  const { booklist }:BookState = useSelector((state: { books: BookState }) => state.books);
   const dispatch = useDispatch();
+
+   // Use useLocalStorage hook to synchronize booklist with local storage
+   useLocalStorage('booklist', booklist);
 
 
   const handleDelete = () => {

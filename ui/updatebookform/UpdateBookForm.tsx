@@ -2,6 +2,7 @@
 import React from 'react';
 import { BookState } from '@/app/redux/types/book';
 import { useState, useEffect } from 'react';
+import { useLocalStorage } from '@/app/hooks/useLocalStorage';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBook, setIsUpdateBookModalOpen } from '@/app/redux/slices/bookSlice';
 import styles from './updatebookform.module.css';
@@ -21,6 +22,10 @@ const UpdateBookForm:React.FC = () => {
 
   const dispatch = useDispatch();
   const { isUpdateBookModalOpen, currentBook, booklist }: BookState = useSelector((state: { books: BookState }) => state.books);
+
+    // Use useLocalStorage hook to synchronize booklist with local storage
+    useLocalStorage('booklist', booklist);
+
 
   //Populate the form with current book data
   useEffect(() => {

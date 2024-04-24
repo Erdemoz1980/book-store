@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { useState } from 'react';
+import { useLocalStorage } from '@/app/hooks/useLocalStorage'
 import { BookState } from '@/app/redux/types/book';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsAddBookModalOpen} from '@/app/redux/slices/bookSlice';
@@ -10,7 +11,6 @@ import { FaRegTimesCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { MAX_DESCRIPTION_LENGTH } from '@/ui/constants';
 
-const maxDescriptionLength = 265
 
 const AddBookForm:React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +19,11 @@ const AddBookForm:React.FC = () => {
     price: '',
     description:''
   });
-  const { isAddBookModalOpen }: BookState = useSelector((state: { books: BookState }) => state.books);
+  const { isAddBookModalOpen, booklist }: BookState = useSelector((state: { books: BookState }) => state.books);
   const dispatch = useDispatch();
+
+  // Use useLocalStorage hook to synchronize booklist with local storage
+  useLocalStorage('booklist', booklist);
 
 
   const onChangeHandler = <T extends HTMLInputElement | HTMLTextAreaElement>(e: React.ChangeEvent<T>) => {
