@@ -69,11 +69,11 @@ export const bookSlice = createSlice({
           }
         }
       });
+
       return {
         ...state,
         booklist: updatedBooklist
       }
-       
     }
   }
 }

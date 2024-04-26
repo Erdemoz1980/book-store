@@ -1,3 +1,8 @@
+:root{
+  --clrMagneticBlue:#004c80;
+  --clrClayOrange:#DF7126;
+}
+
 /*CSS reset*/
 *,
 *::before,

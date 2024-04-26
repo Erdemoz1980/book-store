@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocalStorage } from '@/app/hooks/useLocalStorage';
 import { setIsAddBookModalOpen } from '@/app/redux/slices/bookSlice';
 import { BookState} from '@/app/redux/types/book';
 import styles from './mainpage.module.css';
